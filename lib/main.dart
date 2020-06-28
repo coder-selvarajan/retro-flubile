@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'Nokia.dart';
+
 void main() {
   runApp(FlubileApp());
 }
@@ -42,15 +44,23 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Container(
-                child: Image.asset(
-                  'images/nokia.png',
-                  height: 320.0,
-                  fit: BoxFit.cover,
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Nokia()),
+                  );
+                },
+                child: Container(
+                  child: Image.asset(
+                    'images/nokia4.png',
+                    height: 340.0,
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
               SizedBox(
-                height: 20.0,
+                height: 10.0,
               ),
               Container(
                 child: Text('RETRO - Nokia Phone'),
