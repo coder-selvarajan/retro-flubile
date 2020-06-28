@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'Nokia.dart';
 import 'package:retroflubile/screens/home_page.dart';
 
 void main() {
@@ -12,6 +13,20 @@ class FlubileApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData.light().copyWith(
         scaffoldBackgroundColor: Colors.white,
+        textTheme: TextTheme(
+          headline1: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+            fontSize: 16,
+            fontFamily: 'Nokia',
+          ),
+          bodyText1: TextStyle(
+            fontSize: 13,
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'Nokia',
+          ),
+        ),
       ),
       home: Scaffold(
         appBar: AppBar(
