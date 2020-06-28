@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'Homescreen.dart';
+import 'NokiaScreens/Homescreen.dart';
 
 void main() {
   runApp(FlubileApp());
@@ -36,7 +36,9 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return 
+    return Container(
+      child: Homescreen().homeScreen(500.0, 400.0),
+    );
     // return Row(
     //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
     //   children: <Widget>[
