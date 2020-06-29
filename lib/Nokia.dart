@@ -29,7 +29,13 @@ class Nokia extends StatelessWidget {
                   top: 0.0,
                   bottom: 0.0,
                   child: Container(
-                    child: Image.asset('images/nokia4.png'),
+                    height: 720,
+                    width: 360,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage('images/nokia4.png'),
+                      ),
+                    ),
                   ),
                 ),
                 NokiaButton(
