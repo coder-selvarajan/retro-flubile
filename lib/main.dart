@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'Nokia.dart';
 import 'package:retroflubile/screens/home_page.dart';
 
 void main() {
