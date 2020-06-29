@@ -5,10 +5,13 @@ It's a Flutter based app to give you an immersive experience of retro tech. It h
 Here are some screenshots: 
 
 
-image::/images/screenshots/home.png[Flubile Home]
+![Flubile Home](/images/screenshots/home.png)
 
-image::/images/screenshots/nokia_phone.png[Nokia Phone]
 
-image::/images/screenshots/Android_OS_Screen1.png[Android OS]
+![Nokia Phone](/images/screenshots/nokia_phone.png)
 
-image::/images/screenshots/Android_OS_Screen2.png[Android OS]
+
+![Android OS](/images/screenshots/Android_OS_Screen1.png)
+
+
+![Android OS](/images/screenshots/Android_OS_Screen2.png)
