@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:retroflubile/Nokia.dart';
 import 'package:retroflubile/Nokia2.dart';
 import 'package:retroflubile/screens/retro_smartphone.dart';
 
@@ -58,13 +57,11 @@ class HomePage extends StatelessWidget {
                 Container(
                   child: Text('RETRO - Smart Phone'),
                 ),
-              );
-            },
-            leading: Image.asset('images/galaxy-ppc.png'),
-            title: Text('Samsung'),
+              ],
+            ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
