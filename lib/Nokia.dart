@@ -3,9 +3,6 @@ import 'NokiaScreens/Homescreen.dart';
 
 class Nokia extends StatelessWidget {
   Function buttonPress = (String key) {
-    // all screen display login can go here..
-    //every button click comes here..
-
     print(key);
   };
 
@@ -24,6 +21,7 @@ class Nokia extends StatelessWidget {
             height: 760,
             width: 360,
             child: Stack(
+              fit: StackFit.expand,
               children: <Widget>[
                 Positioned(
                   top: 0.0,
@@ -201,7 +199,7 @@ class Nokia extends StatelessWidget {
                 Positioned(
                   top: 200,
                   left: 85,
-                  child: Homescreen().homeScreen(context, 150.0, 203.0),
+                  child: Screen(),
                 ),
               ],
             ),

@@ -58,11 +58,13 @@ class HomePage extends StatelessWidget {
                 Container(
                   child: Text('RETRO - Smart Phone'),
                 ),
-              ],
-            ),
+              );
+            },
+            leading: Image.asset('images/galaxy-ppc.png'),
+            title: Text('Samsung'),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
