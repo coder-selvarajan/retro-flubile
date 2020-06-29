@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'package:retroflubile/models/recent_apps_item.dart';
 import 'package:retroflubile/screens/main_menu.dart';
+import 'package:retroflubile/screens/open_app.dart';
+import 'package:retroflubile/screens/recent_apps.dart';
 import 'package:retroflubile/widgets/icon_with_name.dart';
+import 'package:retroflubile/widgets/navigation.dart';
+import 'package:retroflubile/widgets/recent_apps_data.dart';
 
 class RetroSmartphone extends StatelessWidget {
+  static String id = 'Retro Smartphone';
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -54,9 +61,12 @@ class RetroSmartphone extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: <Widget>[
-                        IconWithName(icon: 'camera', iconName: 'Camera'),
-                        IconWithName(icon: 'gallery', iconName: 'Gallery'),
-                        IconWithName(icon: 'settings', iconName: 'Settings'),
+                        RetroHomeIconWithName(
+                            appIcon: 'camera', appName: 'Camera'),
+                        RetroHomeIconWithName(
+                            appIcon: 'gallery', appName: 'Gallery'),
+                        RetroHomeIconWithName(
+                            appIcon: 'settings', appName: 'Settings'),
                       ],
                     ),
                     Padding(
@@ -67,19 +77,23 @@ class RetroSmartphone extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: <Widget>[
-                        Image.asset('images/phone.png'),
-                        Image.asset('images/people.png'),
-                        InkWell(
+                        RetroHomeIcon(appName: 'Phone', appIcon: 'phone'),
+                        RetroHomeIcon(appName: 'People', appIcon: 'people'),
+                        Navigation(
                           onTap: () {
                             Navigator.push(context,
                                 MaterialPageRoute(builder: (context) {
-                              return MainMenu();
+                              return ChangeNotifierProvider.value(
+                                value: RecentAppsData(),
+                                child: MainMenu(),
+                              );
                             }));
                           },
-                          child: Image.asset('images/main_menu.png'),
+                          icon: 'main_menu',
                         ),
-                        Image.asset('images/messaging.png'),
-                        Image.asset('images/browser.png'),
+                        RetroHomeIcon(
+                            appName: 'Messaging', appIcon: 'messaging'),
+                        RetroHomeIcon(appName: 'Browser', appIcon: 'browser'),
                       ],
                     ),
                     SizedBox(height: 10.0),
@@ -88,12 +102,29 @@ class RetroSmartphone extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: <Widget>[
-                          InkWell(
-                            onTap: () => Navigator.pop(context),
-                            child: Image.asset('images/back_button.png'),
+                          Navigation(
+                              icon: 'back_button',
+                              onTap: () => Navigator.pop(context)),
+                          Navigation(icon: 'home_button', onTap: () => {}),
+                          Navigation(
+                            icon: 'recent_button',
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                PageRouteBuilder(
+                                    opaque: false,
+                                    barrierColor: Colors.transparent
+                                        .withOpacity(0.7), // set to false
+                                    pageBuilder: (_, __, ___) {
+                                      return ChangeNotifierProvider<
+                                          RecentAppsData>.value(
+                                        value: RecentAppsData(),
+                                        child: RecentApps(),
+                                      );
+                                    }),
+                              );
+                            },
                           ),
-                          Image.asset('images/home_button.png'),
-                          Image.asset('images/recent_button.png')
                         ],
                       ),
                     )
@@ -104,6 +135,79 @@ class RetroSmartphone extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class RetroHomeIcon extends StatelessWidget {
+  final String appName;
+  final String appIcon;
+
+  RetroHomeIcon({@required this.appName, @required this.appIcon});
+
+  @override
+  Widget build(BuildContext context) {
+    return Navigation(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => OpenApp(
+                    appName: appName,
+                    appIcon: appIcon,
+                  )),
+        );
+
+        if (!Provider.of<RecentAppsData>(context, listen: false)
+            .isRecentAppPresent(RecentAppsItem(
+          appName: appName,
+          appIcon: appIcon,
+        ))) {
+          Provider.of<RecentAppsData>(context, listen: false)
+              .addToRecentList(RecentAppsItem(
+            appName: appName,
+            appIcon: appIcon,
+          ));
+        }
+      },
+      icon: appIcon,
+    );
+  }
+}
+
+class RetroHomeIconWithName extends StatelessWidget {
+  final String appName;
+  final String appIcon;
+
+  RetroHomeIconWithName({@required this.appName, @required this.appIcon});
+
+  @override
+  Widget build(BuildContext context) {
+    return IconWithName(
+      icon: appIcon,
+      iconName: appName,
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => OpenApp(
+                    appName: appName,
+                    appIcon: appIcon,
+                  )),
+        );
+
+        if (!Provider.of<RecentAppsData>(context, listen: false)
+            .isRecentAppPresent(RecentAppsItem(
+          appName: appName,
+          appIcon: appIcon,
+        ))) {
+          Provider.of<RecentAppsData>(context, listen: false)
+              .addToRecentList(RecentAppsItem(
+            appName: appName,
+            appIcon: appIcon,
+          ));
+        }
+      },
     );
   }
 }
