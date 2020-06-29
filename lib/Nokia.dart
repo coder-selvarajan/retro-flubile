@@ -11,183 +11,196 @@ class Nokia extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(
+        '${MediaQuery.of(context).size.width}, ${MediaQuery.of(context).size.height}');
     return AspectRatio(
       aspectRatio: 463 / 981,
-      child: Stack(
-        children: <Widget>[
-          Positioned(
-            top: 0.0,
-            bottom: 0.0,
-            child: Container(
-              child: Image.asset('images/nokia4.png'),
+      child: Container(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        child: AspectRatio(
+          aspectRatio: 360 / 760,
+          child: Container(
+            height: 760,
+            width: 360,
+            child: Stack(
+              children: <Widget>[
+                Positioned(
+                  top: 0.0,
+                  bottom: 0.0,
+                  child: Container(
+                    child: Image.asset('images/nokia4.png'),
+                  ),
+                ),
+                NokiaButton(
+                  imageName: 'buttonclear.png',
+                  topPos: 379,
+                  leftPos: 75,
+                  width: 49,
+                  height: 40,
+                  onPress: () {
+                    buttonPress('clear');
+                  },
+                ),
+                NokiaButton(
+                  imageName: 'buttonmenu.png',
+                  topPos: 377,
+                  leftPos: 136,
+                  width: 87,
+                  height: 32,
+                  onPress: () {
+                    buttonPress('menu');
+                  },
+                ),
+                NokiaButton(
+                  imageName: 'buttonleftarrow.png',
+                  topPos: 405,
+                  leftPos: 218,
+                  width: 42,
+                  height: 47,
+                  onPress: () {
+                    buttonPress('left');
+                  },
+                ),
+                NokiaButton(
+                  imageName: 'buttonrightarrow.png',
+                  topPos: 385,
+                  leftPos: 247,
+                  width: 40,
+                  height: 36,
+                  onPress: () {
+                    buttonPress('right');
+                  },
+                ),
+                NokiaButton(
+                  imageName: 'button1.png',
+                  topPos: 466,
+                  leftPos: 84,
+                  width: 55,
+                  height: 35,
+                  onPress: () {
+                    buttonPress('1');
+                  },
+                ),
+                NokiaButton(
+                  imageName: 'button2.png',
+                  topPos: 472,
+                  leftPos: 152,
+                  width: 57,
+                  height: 32,
+                  onPress: () {
+                    buttonPress('2');
+                  },
+                ),
+                NokiaButton(
+                  imageName: 'button3.png',
+                  topPos: 469,
+                  leftPos: 230,
+                  width: 51,
+                  height: 32,
+                  onPress: () {
+                    buttonPress('3');
+                  },
+                ),
+                NokiaButton(
+                  imageName: 'button4.png',
+                  topPos: 515,
+                  leftPos: 80,
+                  width: 69,
+                  height: 39,
+                  onPress: () {
+                    buttonPress('4');
+                  },
+                ),
+                NokiaButton(
+                  imageName: 'button5.png',
+                  topPos: 524,
+                  leftPos: 152,
+                  width: 61,
+                  height: 33,
+                  onPress: () {
+                    buttonPress('5');
+                  },
+                ),
+                NokiaButton(
+                  imageName: 'button6.png',
+                  topPos: 518,
+                  leftPos: 226,
+                  width: 59,
+                  height: 34,
+                  onPress: () {
+                    buttonPress('6');
+                  },
+                ),
+                NokiaButton(
+                  imageName: 'button7.png',
+                  topPos: 570,
+                  leftPos: 80,
+                  width: 62,
+                  height: 35,
+                  onPress: () {
+                    buttonPress('7');
+                  },
+                ),
+                NokiaButton(
+                  imageName: 'button8.png',
+                  topPos: 575,
+                  leftPos: 152,
+                  width: 60,
+                  height: 32,
+                  onPress: () {
+                    buttonPress('8');
+                  },
+                ),
+                NokiaButton(
+                  imageName: 'button9.png',
+                  topPos: 570,
+                  leftPos: 217,
+                  width: 65,
+                  height: 35,
+                  onPress: () {
+                    buttonPress('9');
+                  },
+                ),
+                NokiaButton(
+                  imageName: 'buttonstar.png',
+                  topPos: 621,
+                  leftPos: 82,
+                  width: 56,
+                  height: 33,
+                  onPress: () {
+                    buttonPress('*');
+                  },
+                ),
+                NokiaButton(
+                  imageName: 'button0.png',
+                  topPos: 626,
+                  leftPos: 150,
+                  width: 63,
+                  height: 31,
+                  onPress: () {
+                    buttonPress('0');
+                  },
+                ),
+                NokiaButton(
+                  imageName: 'buttonhash.png',
+                  topPos: 619,
+                  leftPos: 224,
+                  width: 52,
+                  height: 34,
+                  onPress: () {
+                    buttonPress('#');
+                  },
+                ),
+                Positioned(
+                  top: 200,
+                  left: 85,
+                  child: Homescreen().homeScreen(context, 150.0, 203.0),
+                ),
+              ],
             ),
           ),
-          NokiaButton(
-            imageName: 'buttonclear.png',
-            topPos: 450,
-            leftPos: 85,
-            width: 49,
-            height: 40,
-            onPress: () {
-              buttonPress('clear');
-            },
-          ),
-          NokiaButton(
-            imageName: 'buttonmenu.png',
-            topPos: 443,
-            leftPos: 168,
-            width: 87,
-            height: 32,
-            onPress: () {
-              buttonPress('menu');
-            },
-          ),
-          NokiaButton(
-            imageName: 'buttonleftarrow.png',
-            topPos: 483,
-            leftPos: 257,
-            width: 42,
-            height: 47,
-            onPress: () {
-              buttonPress('left');
-            },
-          ),
-          NokiaButton(
-            imageName: 'buttonrightarrow.png',
-            topPos: 463,
-            leftPos: 282,
-            width: 40,
-            height: 36,
-            onPress: () {
-              buttonPress('right');
-            },
-          ),
-          NokiaButton(
-            imageName: 'button1.png',
-            topPos: 555,
-            leftPos: 100,
-            width: 55,
-            height: 35,
-            onPress: () {
-              buttonPress('1');
-            },
-          ),
-          NokiaButton(
-            imageName: 'button2.png',
-            topPos: 560,
-            leftPos: 180,
-            width: 57,
-            height: 32,
-            onPress: () {
-              buttonPress('2');
-            },
-          ),
-          NokiaButton(
-            imageName: 'button3.png',
-            topPos: 555,
-            leftPos: 270,
-            width: 51,
-            height: 32,
-            onPress: () {
-              buttonPress('3');
-            },
-          ),
-          NokiaButton(
-            imageName: 'button4.png',
-            topPos: 610,
-            leftPos: 97,
-            width: 69,
-            height: 39,
-            onPress: () {
-              buttonPress('4');
-            },
-          ),
-          NokiaButton(
-            imageName: 'button5.png',
-            topPos: 620,
-            leftPos: 180,
-            width: 61,
-            height: 33,
-            onPress: () {
-              buttonPress('5');
-            },
-          ),
-          NokiaButton(
-            imageName: 'button6.png',
-            topPos: 617,
-            leftPos: 265,
-            width: 59,
-            height: 34,
-            onPress: () {
-              buttonPress('6');
-            },
-          ),
-          NokiaButton(
-            imageName: 'button7.png',
-            topPos: 673,
-            leftPos: 97,
-            width: 62,
-            height: 35,
-            onPress: () {
-              buttonPress('7');
-            },
-          ),
-          NokiaButton(
-            imageName: 'button8.png',
-            topPos: 680,
-            leftPos: 180,
-            width: 60,
-            height: 32,
-            onPress: () {
-              buttonPress('8');
-            },
-          ),
-          NokiaButton(
-            imageName: 'button9.png',
-            topPos: 675,
-            leftPos: 265,
-            width: 65,
-            height: 35,
-            onPress: () {
-              buttonPress('9');
-            },
-          ),
-          NokiaButton(
-            imageName: 'buttonstar.png',
-            topPos: 732,
-            leftPos: 100,
-            width: 56,
-            height: 33,
-            onPress: () {
-              buttonPress('*');
-            },
-          ),
-          NokiaButton(
-            imageName: 'button0.png',
-            topPos: 742,
-            leftPos: 180,
-            width: 63,
-            height: 31,
-            onPress: () {
-              buttonPress('0');
-            },
-          ),
-          NokiaButton(
-            imageName: 'buttonhash.png',
-            topPos: 733,
-            leftPos: 268,
-            width: 52,
-            height: 34,
-            onPress: () {
-              buttonPress('#');
-            },
-          ),
-          Positioned(
-            top: 196,
-            left: 80,
-            child: Homescreen().homeScreen(context, 150.0, 203.0),
-          ),
-        ],
+        ),
       ),
     );
   }
@@ -266,7 +279,7 @@ class _NokiaButtonState extends State<NokiaButton> {
       child: Material(
 //        elevation: 50.0,
         color: Colors.transparent,
-        clipBehavior: Clip.hardEdge,
+        clipBehavior: Clip.antiAlias,
         child: Ink.image(
           image: AssetImage('images/${widget.imageName}'),
           fit: BoxFit.cover,
