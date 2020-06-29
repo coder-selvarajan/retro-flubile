@@ -13,14 +13,14 @@ class FlubileApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.white,
         textTheme: TextTheme(
           headline1: TextStyle(
-            color: Colors.black,
+            color: Color.fromRGBO(5, 5, 5, 100),
             fontWeight: FontWeight.bold,
             fontSize: 16,
             fontFamily: 'Nokia',
           ),
           bodyText1: TextStyle(
             fontSize: 13,
-            color: Colors.black,
+            color: Color.fromRGBO(5, 5, 5, 100),
             fontWeight: FontWeight.bold,
             fontFamily: 'Nokia',
           ),

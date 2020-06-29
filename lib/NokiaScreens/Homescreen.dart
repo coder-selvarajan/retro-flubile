@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Homescreen {
+  var black = Color.fromRGBO(5, 5, 5, 100);
   signal() {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -15,7 +16,7 @@ class Homescreen {
                   Container(
                     height: 20,
                     width: 10,
-                    decoration: BoxDecoration(color: Colors.black),
+                    decoration: BoxDecoration(color: black),
                   ),
                   SizedBox(
                     height: 3,
@@ -23,7 +24,7 @@ class Homescreen {
                   Container(
                     height: 20,
                     width: 6,
-                    decoration: BoxDecoration(color: Colors.black),
+                    decoration: BoxDecoration(color: black),
                   ),
                   SizedBox(
                     height: 3,
@@ -31,7 +32,7 @@ class Homescreen {
                   Container(
                     height: 20,
                     width: 3.6,
-                    decoration: BoxDecoration(color: Colors.black),
+                    decoration: BoxDecoration(color: black),
                   ),
                   SizedBox(
                     height: 3,
@@ -39,7 +40,7 @@ class Homescreen {
                   Container(
                     height: 20,
                     width: 3.6,
-                    decoration: BoxDecoration(color: Colors.black),
+                    decoration: BoxDecoration(color: black),
                   ),
                 ],
               ),
@@ -87,6 +88,10 @@ class Homescreen {
             ),
           ],
         ),
+        Positioned(
+          left: 50,
+          child: time(context),
+        ),
       ],
     );
   }
@@ -102,7 +107,7 @@ class Homescreen {
               Container(
                 height: 20,
                 width: 10,
-                decoration: BoxDecoration(color: Colors.black),
+                decoration: BoxDecoration(color: black),
               ),
               SizedBox(
                 height: 3,
@@ -110,7 +115,7 @@ class Homescreen {
               Container(
                 height: 20,
                 width: 6,
-                decoration: BoxDecoration(color: Colors.black),
+                decoration: BoxDecoration(color: black),
               ),
               SizedBox(
                 height: 3,
@@ -118,7 +123,7 @@ class Homescreen {
               Container(
                 height: 20,
                 width: 3.6,
-                decoration: BoxDecoration(color: Colors.black),
+                decoration: BoxDecoration(color: black),
               ),
               SizedBox(
                 height: 3,
@@ -126,7 +131,7 @@ class Homescreen {
               Container(
                 height: 20,
                 width: 3.6,
-                decoration: BoxDecoration(color: Colors.black),
+                decoration: BoxDecoration(color: black),
               ),
             ],
           ),
@@ -147,8 +152,8 @@ class Homescreen {
   time(context) {
     var date = TimeOfDay.now();
     print(date);
-    var fdate = date.toString().substring(11);
-    var odate = fdate.split(')');
+    var fdate = date.toString().split('(');
+    var odate = fdate[1].split(')');
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
@@ -166,7 +171,7 @@ class Homescreen {
         child: Container(
           height: height,
           width: width,
-          decoration: BoxDecoration(color: Colors.green),
+          decoration: BoxDecoration(color: Colors.transparent),
           child: Padding(
             padding: const EdgeInsets.all(10.0),
             child: Row(
@@ -178,10 +183,6 @@ class Homescreen {
                 Expanded(
                   child: center(context),
                   flex: 2,
-                ),
-                Expanded(
-                  child: time(context),
-                  flex: 1,
                 ),
                 Expanded(
                   child: batteryBar(),
