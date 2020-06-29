@@ -39,9 +39,7 @@ class HomePage extends StatelessWidget {
         ),
         InkWell(
           onTap: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) {
-              return RetroSmartphone();
-            }));
+            Navigator.pushNamed(context, RetroSmartphone.id);
           },
           child: Expanded(
             child: Column(

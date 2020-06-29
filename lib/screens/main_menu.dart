@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'package:retroflubile/models/recent_apps_item.dart';
+import 'package:retroflubile/screens/open_app.dart';
 import 'package:retroflubile/screens/recent_apps.dart';
+import 'package:retroflubile/screens/retro_smartphone.dart';
 import 'package:retroflubile/widgets/icon_with_name.dart';
+import 'package:retroflubile/widgets/navigation.dart';
+import 'package:retroflubile/widgets/recent_apps_data.dart';
 
 class MainMenu extends StatelessWidget {
   final List<IconWithName> _iconWithNameList = [
@@ -137,9 +143,33 @@ class MainMenu extends StatelessWidget {
                   ),
                   Padding(
                     padding: EdgeInsets.only(right: 15.0),
-                    child: Image.asset(
-                      'images/market.png',
-                      height: 38.0,
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => OpenApp(
+                                    appName: 'Market',
+                                    appIcon: 'market',
+                                  )),
+                        );
+
+                        if (!Provider.of<RecentAppsData>(context, listen: false)
+                            .isRecentAppPresent(RecentAppsItem(
+                          appName: 'Market',
+                          appIcon: 'market',
+                        ))) {
+                          Provider.of<RecentAppsData>(context, listen: false)
+                              .addToRecentList(RecentAppsItem(
+                            appName: 'Market',
+                            appIcon: 'market',
+                          ));
+                        }
+                      },
+                      child: Image.asset(
+                        'images/market.png',
+                        height: 38.0,
+                      ),
                     ),
                   )
                 ],
@@ -159,9 +189,34 @@ class MainMenu extends StatelessWidget {
                       itemCount: _iconWithNameList.length,
                       itemBuilder: (context, index) {
                         return IconWithName(
-                          icon: _iconWithNameList[index].icon,
-                          iconName: _iconWithNameList[index].iconName,
-                        );
+                            icon: _iconWithNameList[index].icon,
+                            iconName: _iconWithNameList[index].iconName,
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => OpenApp(
+                                          appName:
+                                              _iconWithNameList[index].iconName,
+                                          appIcon:
+                                              _iconWithNameList[index].icon,
+                                        )),
+                              );
+
+                              if (!Provider.of<RecentAppsData>(context,
+                                      listen: false)
+                                  .isRecentAppPresent(RecentAppsItem(
+                                appName: _iconWithNameList[index].iconName,
+                                appIcon: _iconWithNameList[index].icon,
+                              ))) {
+                                Provider.of<RecentAppsData>(context,
+                                        listen: false)
+                                    .addToRecentList(RecentAppsItem(
+                                  appName: _iconWithNameList[index].iconName,
+                                  appIcon: _iconWithNameList[index].icon,
+                                ));
+                              }
+                            });
                       },
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                           childAspectRatio: 10 / 13,
@@ -169,7 +224,13 @@ class MainMenu extends StatelessWidget {
                           mainAxisSpacing: 8,
                           crossAxisCount: 4),
                     ),
-                    Icon(Icons.directions_transit, color: Colors.white),
+                    Center(
+                      child: Text(
+                        'No Widget',
+                        style: GoogleFonts.roboto(
+                            color: Colors.white, fontSize: 15.0),
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -182,25 +243,34 @@ class MainMenu extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
-                      InkWell(
+                      Navigation(
+                        icon: 'back_button',
                         onTap: () => Navigator.pop(context),
-                        child: Image.asset('images/back_button.png'),
                       ),
-                      Image.asset('images/home_button.png'),
-                      InkWell(
+                      Navigation(
+                        icon: 'home_button',
+                        onTap: () => Navigator.popUntil(
+                            context, ModalRoute.withName(RetroSmartphone.id)),
+                      ),
+                      Navigation(
+                        icon: 'recent_button',
                         onTap: () {
                           Navigator.push(
                             context,
                             PageRouteBuilder(
-                              opaque: false,
-                              barrierColor: Colors.transparent
-                                  .withOpacity(0.7), // set to false
-                              pageBuilder: (_, __, ___) => RecentApps(),
-                            ),
+                                opaque: false,
+                                barrierColor: Colors.transparent
+                                    .withOpacity(0.7), // set to false
+                                pageBuilder: (_, __, ___) {
+                                  return ChangeNotifierProvider<
+                                      RecentAppsData>.value(
+                                    value: RecentAppsData(),
+                                    child: RecentApps(),
+                                  );
+                                }),
                           );
                         },
-                        child: Image.asset('images/recent_button.png'),
-                      )
+                      ),
                     ],
                   ),
                 ),
