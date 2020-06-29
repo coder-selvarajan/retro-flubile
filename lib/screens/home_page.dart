@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:retroflubile/Nokia.dart';
+import 'package:retroflubile/Nokia2.dart';
 import 'package:retroflubile/screens/retro_smartphone.dart';
 
 class HomePage extends StatelessWidget {
@@ -12,7 +13,7 @@ class HomePage extends StatelessWidget {
           onTap: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => Nokia()),
+              MaterialPageRoute(builder: (context) => Nokia2()),
             );
           },
           child: Expanded(
