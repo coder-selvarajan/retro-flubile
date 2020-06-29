@@ -158,8 +158,7 @@ class Nokia2 extends StatelessWidget {
           Positioned(
             top: nokiaScreenTop,
             left: nokiaScreenLeft,
-            child: Homescreen()
-                .homeScreen(context, nokiaScreenHeight, nokiaScreenWidth),
+            child: Screen(),
           ),
           Positioned(
             top: buttonGridTop,

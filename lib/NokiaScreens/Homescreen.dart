@@ -221,10 +221,16 @@ class Screen extends StatefulWidget {
 }
 
 class _ScreenState extends State<Screen> {
-  List<Widget> screenList = [HomeScreen(), PhoneBook(), Messages()];
+  List<Widget> screenList = [
+    HomeScreen(),
+    PhoneBook(),
+    Messages(),
+    CallRegister(),
+    Settings()
+  ];
   @override
   Widget build(BuildContext context) {
-    return Container(child: screenList[2]);
+    return Container(child: screenList[0]);
   }
 }
 
