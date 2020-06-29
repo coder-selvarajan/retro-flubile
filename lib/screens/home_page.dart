@@ -30,7 +30,8 @@ class HomePage extends StatelessWidget {
                   height: 20.0,
                 ),
                 Container(
-                  child: Text('RETRO - Nokia Phone'),
+                  child: Text('RETRO - Nokia Phone',
+                      style: TextStyle(color: Colors.black)),
                 ),
               ],
             ),
@@ -55,7 +56,8 @@ class HomePage extends StatelessWidget {
                   height: 20.0,
                 ),
                 Container(
-                  child: Text('RETRO - Smart Phone'),
+                  child: Text('RETRO - Smart Phone',
+                      style: TextStyle(color: Colors.black)),
                 ),
               ],
             ),
